@@ -54,7 +54,6 @@ if 'user_score' not in session:
 
 @app.route('/')
 def homepage():
-    session.pop('user_score', None)
     if is_logged_in():
         return render_template('homepage.html', title="General Quiz | Homepage")
     else:
@@ -251,6 +250,7 @@ def answer10():
 
 @app.route('/results', methods=["POST"])
 def results():
+    session.pop('user_score', None)
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -258,8 +258,6 @@ def results():
         global random_number
         random_number = None
         return render_template('homepage.html')
-        if request.form.get("logout_button"):
-            logout()
     else:
         return render_template('results.html')
         random_number = None
