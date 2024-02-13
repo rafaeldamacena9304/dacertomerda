@@ -50,8 +50,6 @@ def is_logged_in():
 
 @app.route('/')
 def homepage():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if is_logged_in():
         return render_template('homepage.html', title="General Quiz | Homepage")
     else:
@@ -72,8 +70,6 @@ def contact():
 
 @app.route('/questions', methods=["POST", "GET"])
 def questions():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     global random_number
     random_number = random.randint(1,1000)
     if is_logged_in():
