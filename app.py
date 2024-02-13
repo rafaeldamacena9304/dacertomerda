@@ -5,20 +5,17 @@ import random
 import os
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
+
+
 app = Flask(__name__)
-
-session['user_id'] = 123
-
-# Obter uma chave da sessão
-user_id = session.get('user_id')
 
 app.secret_key = 'sae5f4a56we5r4f$$#@!!!g5s4ae5r42/xz12*@!(#)13505435t5e4698+4f5w95+-d4154r5tgs54er524435t45596e4gf5'
 client = MongoClient(os.getenv("MONGODB_URI"))
 app.db = client.generaldb
 resultados = []
+qtd = []
 def question_id():
     return random_number
 
@@ -53,8 +50,6 @@ def is_logged_in():
     return 'user_email' in session
 
 
-if 'user_score' not in session:
-    session['user_score'] = 0
 
 @app.route('/')
 def homepage():
@@ -66,8 +61,6 @@ def homepage():
 
 @app.route('/contact')
 def contact():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if is_logged_in():
         return render_template('contact.html', title="General Quiz | Contact")
     else:
@@ -96,9 +89,8 @@ def answer1():
     email = session['user_email']
     question1d = request.form.get("question1d")
     if request.form.get("question1d"):
-        session['user_score'] += 1
         random_number = random.randint(1, 500)
-        current_app.db.generaldb.insert_one({"score": session['user_score'],"id": question_id(),"user_email": email, "question1": request.form.get("question1d")})
+        current_app.db.generaldb.insert_one({"id": question_id(),"user_email": email, "question1": request.form.get("question1d")})
         resultados.append(random_number)
     else:
         print('incorreto')
@@ -114,8 +106,7 @@ def answer2():
     email = session['user_email']
     question2c = request.form.get("question2c")
     if  request.form.get("question2c"):
-        session['user_score'] += 1
-        current_app.db.generaldb.insert_one({"score": session['user_score'],"id": question_id(),"user_email": email, "question2": request.form.get("question2c")})
+        current_app.db.generaldb.insert_one({"id": question_id(),"user_email": email, "question2": request.form.get("question2c")})
         resultados.append(random_number)
     else:
             pass
@@ -132,8 +123,7 @@ def answer3():
     question3 = []
     question3a = request.form.get("question3a")
     if request.form.get("question3a"):
-        session['user_score'] += 1
-        current_app.db.generaldb.insert_one({"score": session['user_score'],"id": question_id(),"user_email": email, "question3": request.form.get("question3a")})
+        current_app.db.generaldb.insert_one({"id": question_id(),"user_email": email, "question3": request.form.get("question3a")})
         resultados.append(random_number)
     else:
             pass
@@ -148,8 +138,7 @@ def answer4():
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     email = session['user_email']
     if  request.form.get("question4b"):
-        session['user_score'] += 1
-        current_app.db.generaldb.insert_one({"score": session['user_score'],"id": question_id(),"user_email": email, "question4": request.form.get("question4b")})
+        current_app.db.generaldb.insert_one({"id": question_id(),"user_email": email, "question4": request.form.get("question4b")})
         resultados.append(random_number)
     else:
             pass
@@ -164,8 +153,7 @@ def answer5():
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     email = session['user_email']
     if  request.form.get("question5b"):
-        session['user_score'] += 1
-        current_app.db.generaldb.insert_one({"score": session['user_score'],"id": question_id(),"user_email": email, "question5": request.form.get("question5b")})
+        current_app.db.generaldb.insert_one({"id": question_id(),"user_email": email, "question5": request.form.get("question5b")})
         resultados.append(random_number)
     else:
             pass
@@ -180,8 +168,7 @@ def answer6():
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     email = session['user_email']
     if  request.form.get("question6a"):
-        session['user_score'] += 1
-        current_app.db.generaldb.insert_one({"score": session['user_score'],"id": question_id(),"user_email": email, "question6": request.form.get("question6a")})
+        current_app.db.generaldb.insert_one({"id": question_id(),"user_email": email, "question6": request.form.get("question6a")})
         resultados.append(random_number)
     else:
             pass
@@ -196,8 +183,7 @@ def answer7():
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     email = session['user_email']
     if  request.form.get("question7a"):
-        session['user_score'] += 1
-        current_app.db.generaldb.insert_one({"score": session['user_score'],"id": question_id(),"user_email": email, "question7": request.form.get("question7a")})
+        current_app.db.generaldb.insert_one({"id": question_id(),"user_email": email, "question7": request.form.get("question7a")})
         resultados.append(random_number)
     else:
         pass
@@ -212,8 +198,7 @@ def answer8():
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     email = session['user_email']
     if  request.form.get("question8c"):
-        session['user_score'] += 1
-        current_app.db.generaldb.insert_one({"score": session['user_score'],"id": question_id(),"user_email": email, "question8": request.form.get("question8c")})
+        current_app.db.generaldb.insert_one({"id": question_id(),"user_email": email, "question8": request.form.get("question8c")})
         resultados.append(random_number)
     else:
             pass
@@ -228,8 +213,7 @@ def answer9():
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     email = session['user_email']
     if  request.form.get("question9d"):
-        session['user_score'] += 1
-        current_app.db.generaldb.insert_one({"score": session['user_score'],"id": question_id(),"user_email": email, "question9": request.form.get("question9d")})
+        current_app.db.generaldb.insert_one({"id": question_id(),"user_email": email, "question9": request.form.get("question9d")})
         resultados.append(random_number)
     else:
             pass
@@ -244,17 +228,16 @@ def answer10():
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     email = session['user_email']
     if  request.form.get("question10c"):
-        session['user_score'] += 1
-        current_app.db.generaldb.insert_one({"score": session['user_score'],"id": question_id(),"user_email": email, "question10": request.form.get("question10c")})
+        current_app.db.generaldb.insert_one({"id": question_id(),"user_email": email, "question10": request.form.get("question10c")})
         resultados.append(random_number)
     else:
             pass
-    user_score = session.get('user_score', 0)
-    return render_template('results.html', title='General Quiz | Results', qtd=user_score )
+    qtd.append(len(resultados))
+    return render_template('results.html', title='General Quiz | Results', qtd=qtd )
 
 @app.route('/results', methods=["POST"])
 def results():
-    session.pop('user_score', None)
+    qtd.clear()
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -263,10 +246,9 @@ def results():
         random_number = None
         return render_template('homepage.html')
     else:
-        return render_template('results.html')
+        return render_template('homepage.html')
         random_number = None
-        logout()
-    return url_for('logout')
+
 
 
 if __name__ == "__main__":
