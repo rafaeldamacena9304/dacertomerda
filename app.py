@@ -240,15 +240,13 @@ def results():
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
-    if request.form.get("return_button1", "return_button"):
+    if request.form.get("return_button"):
         global random_number
         random_number = None
         return render_template('homepage.html')
     else:
-        return render_template('results.html')
         random_number = None
-        logout()
-    return render_template('homepage.html', title="General Quiz | Homepage")
+        return render_template('homepage.html', title="General Quiz | Homepage")
 
 
 if __name__ == "__main__":
