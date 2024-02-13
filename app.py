@@ -54,6 +54,7 @@ if 'user_score' not in session:
 
 @app.route('/')
 def homepage():
+    session.pop('user_score', None)
     if is_logged_in():
         return render_template('homepage.html', title="General Quiz | Homepage")
     else:
@@ -245,11 +246,8 @@ def answer10():
         resultados.append(random_number)
     else:
             pass
-    if len(resultados) == 10:
-        qtd = len(resultados)
-    else:
-        qtd = len(resultados)
-    return render_template('results.html', title='General Quiz | Results', qtd=qtd )
+    user_score = session.get('user_score', 0)
+    return render_template('results.html', title='General Quiz | Results', qtd=user_score )
 
 @app.route('/results', methods=["POST"])
 def results():
