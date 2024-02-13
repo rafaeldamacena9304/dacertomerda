@@ -58,8 +58,6 @@ def homepage():
 
 @app.route('/contact')
 def contact():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if is_logged_in():
         return render_template('contact.html', title="General Quiz | Contact")
     else:
