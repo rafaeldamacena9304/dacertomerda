@@ -82,8 +82,6 @@ def questions():
 # QUESTÃO 1
 @app.route('/answer1', methods=["POST"])
 def answer1():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -101,8 +99,6 @@ def answer1():
 #QUESTÃO 2
 @app.route('/answer2', methods=["POST"])
 def answer2():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -119,8 +115,6 @@ def answer2():
 # QUESTÃO 3
 @app.route('/answer3', methods=["POST"])
 def answer3():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -138,8 +132,6 @@ def answer3():
 # QUESTÃO 4
 @app.route('/answer4', methods=["POST"])
 def answer4():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -155,8 +147,6 @@ def answer4():
 # QUESTÃO 5
 @app.route('/answer5', methods=["POST"])
 def answer5():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -172,8 +162,6 @@ def answer5():
 # QUESTÃO 6
 @app.route('/answer6', methods=["POST"])
 def answer6():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -189,8 +177,6 @@ def answer6():
 # QUESTÃO 7
 @app.route('/answer7', methods=["POST"])
 def answer7():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -206,8 +192,6 @@ def answer7():
 # QUESTÃO 8
 @app.route('/answer8', methods=["POST"])
 def answer8():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -223,8 +207,6 @@ def answer8():
 # QUESTÃO 9
 @app.route('/answer9', methods=["POST"])
 def answer9():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -240,8 +222,6 @@ def answer9():
 # QUESTÃO 10
 @app.route('/answer10', methods=["POST"])
 def answer10():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
@@ -259,8 +239,6 @@ def answer10():
 
 @app.route('/results', methods=["POST"])
 def results():
-    if current_app.db.generaldb.find_one({"email": {"$exists": False}}):
-        return render_template('login.html', h="You're not logged-in", p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
     if not is_logged_in():
         return render_template('login.html', h="You're not logged-in",
                                p="Please input your pay-pal e-mail. That'll be the way you receive rewards.")
