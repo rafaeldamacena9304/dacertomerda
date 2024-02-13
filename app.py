@@ -246,13 +246,11 @@ def results():
         global random_number
         random_number = None
         return render_template('homepage.html')
-        if request.form.get("logout_button"):
-            logout()
     else:
         return render_template('results.html')
         random_number = None
         logout()
-    return url_for('logout')
+    return render_template('homepage.html', title="General Quiz | Homepage")
 
 
 if __name__ == "__main__":
